@@ -7,7 +7,7 @@ use App\Entity\Location;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
-/**
+/**S
  * @extends ServiceEntityRepository<Measurement>
  *
  * @method Measurement|null find($id, $lockMode = null, $lockVersion = null)
