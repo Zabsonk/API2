@@ -1,0 +1,57 @@
+App\Entity\Location:
+  properties:
+    city:
+      - Regex:
+          pattern: '/^[A-z|À-ž|-]+$/'
+          match: true
+          message: 'City name must contain only letters and hyphens, no numbers or special characters.'
+          groups: ['create', 'edit']
+      - Length:
+          max: 255
+          maxMessage: 'City name cannot exceed {{ limit }} characters.'
+          groups: ['create', 'edit']
+      - NotBlank:
+          message: 'Please provide a city name.'
+          groups: ['create', 'edit']
+    latitude:
+      - Range:
+          min: -90
+          max: 90
+          invalidMessage: 'Latitude must be a valid number.'
+          notInRangeMessage: 'Latitude must be between {{ min }} and {{ max }}.'
+          groups: ['create', 'edit']
+      - NotBlank:
+          message: 'Latitude is required.'
+          groups: ['create', 'edit']
+    longtitude:
+      - Range:
+          min: -180
+          max: 180
+          invalidMessage: 'Longitude must be a valid number.'
+          notInRangeMessage: 'Longitude must be between {{ min }} and {{ max }}.'
+          groups: ['create', 'edit']
+      - NotBlank:
+          message: 'Longitude is required.'
+          groups: ['create', 'edit']
+
+App\Entity\Measurement:
+  properties:
+    date:
+      - NotBlank:
+          message: 'Date is required.'
+          groups: ['create', 'edit']
+    celsius:
+      - Range:
+          min: -30
+          max: 60
+          invalidMessage: 'Temperature must be a valid number.'
+          notInRangeMessage: 'Temperature must be between {{ min }} and {{ max }} degrees Celsius.'
+          groups: ['create', 'edit']
+      - NotBlank:
+          message: 'Temperature is required.'
+          groups: ['create', 'edit']
+
+    location:
+      - NotBlank:
+          message: 'Please select a location.'
+          groups: ['create', 'edit']
